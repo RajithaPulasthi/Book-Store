@@ -8,10 +8,12 @@ import dropDownIcon from './dropDownIcon.png';
 import HeroImage from './heroImage.png';
 import book1 from './book1.jpg';
 import book2 from './book2.jpg';
-// import book3 from './book3.jpeg';
-// import book4 from './book4.jpg';
-// import book5 from './book5.jpeg';
-// import book6 from './book6.png';
+import book3 from './book3.jpeg';
+import book4 from './book4.jpg';
+import book5 from './book5.jpeg';
+import book6 from './book6.png';
+import book7 from './book7.jpg';
+import book8 from './book8.jpg';
 
 export const assets ={
     logo,
@@ -21,7 +23,8 @@ export const assets ={
     menuIcon,
     dropDownIconLeft,
     dropDownIcon,
-    HeroImage
+    HeroImage,
+    
     
 }
 
@@ -33,7 +36,7 @@ export const products = [{
     publicationDate: '2022',
     genre: 'Fiction',
     price: 100,
-    image: [logo],
+    image: [book1],
     available: true
     
 },
@@ -45,6 +48,72 @@ export const products = [{
     genre: 'Fiction',
     price: 350,
     image: [book2],
+    available: true
+},
+{
+
+    id: 3,
+    title: 'NovelNest',
+    author: 'Author Name',
+    publicationDate: '2022',
+    genre: 'Fiction',
+    price: 100,
+    image: [book3],
+    available: true
+    
+},
+{
+    id: 4,
+    title: 'NovelNest',
+    author: 'Author Name',
+    publicationDate: '2022',
+    genre: 'Fiction',
+    price: 350,
+    image: [book4],
+    available: true
+},
+{
+
+    id: 5,
+    title: 'NovelNest',
+    author: 'Author Name',
+    publicationDate: '2022',
+    genre: 'Fiction',
+    price: 100,
+    image: [book5],
+    available: true
+    
+},
+{
+    id: 6,
+    title: 'NovelNest',
+    author: 'Author Name',
+    publicationDate: '2022',
+    genre: 'Fiction',
+    price: 350,
+    image: [book6],
+    available: true
+},
+{
+
+    id: 7,
+    title: 'NovelNest',
+    author: 'Author Name',
+    publicationDate: '2022',
+    genre: 'Fiction',
+    price: 100,
+    image: [book7],
+    available: true
+    
+},
+{
+    id: 8,
+    title: 'NovelNest',
+    author: 'Author Name',
+    publicationDate: '2022',
+    genre: 'Fiction',
+    price: 350,
+    image: [book8],
     available: true
 }
 ]

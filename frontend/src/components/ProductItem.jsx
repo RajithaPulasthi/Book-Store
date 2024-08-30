@@ -24,6 +24,7 @@ import React, { useContext } from 'react';
 import { ShopContext } from '../context/ShopContext';
 import { Link } from 'react-router-dom';
 
+
 const ProductItem = ({ id, image, name, price }) => {
   const { currency } = useContext(ShopContext);
 
@@ -32,7 +33,7 @@ const ProductItem = ({ id, image, name, price }) => {
       <div className='overflow-hidden'>
         {/* Handle cases where image might be undefined or empty */}
         <img
-          className='hover:scale-110 transition ease-in-out'
+          className='hover:scale-110 transition ease-in-out max-h-48'
           src={image && image[0] ? image[0] : '../assets/heroImage.png'} // Fallback image
           alt={name}
         />

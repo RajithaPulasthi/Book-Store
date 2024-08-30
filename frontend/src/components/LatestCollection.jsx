@@ -47,7 +47,7 @@ const LatestCollection = () => {
   const { products } = useContext(ShopContext);
 
   useEffect(() => {
-    setLatestProducts(products.slice(0, 2));
+    setLatestProducts(products.slice(0, 8));
   }, [products]); // Added `products` as a dependency
 
   return (
@@ -59,9 +59,9 @@ const LatestCollection = () => {
         </p>
       </div>
       {/* Rendering Products */}
-      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 gap-y-6'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-8 gap-2 gap-y-6'>
         {latestProducts.map((item, index) => (
-          <ProductItem key={index} id={item.id} img={item.image} name={item.title} price={item.price} />
+          <ProductItem key={index} id={item.id} image={item.image} name={item.title} price={item.price} />
         ))}
       </div>
     </div>
