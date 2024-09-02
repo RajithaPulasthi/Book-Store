@@ -4,8 +4,10 @@ import profileIcon from './profileIcon.png';
 import cartIcon from './cartIcon.png';
 import menuIcon from './menuIcon.png';
 import dropDownIconLeft from './dropDownIconLeft.png';  
+import dropDownIconRight from './dropDownIconRight.png';
 import dropDownIcon from './dropDownIcon.png';
 import HeroImage from './heroImage.png';
+import crossIcon from './crossIcon.png';    
 import book1 from './book1.jpg';
 import book2 from './book2.jpg';
 import book3 from './book3.jpeg';
@@ -14,6 +16,7 @@ import book5 from './book5.jpeg';
 import book6 from './book6.png';
 import book7 from './book7.jpg';
 import book8 from './book8.jpg';
+import removeIcon from './removeIcon.svg';
 
 export const assets ={
     logo,
@@ -22,8 +25,12 @@ export const assets ={
     cartIcon,
     menuIcon,
     dropDownIconLeft,
+    dropDownIconRight,
     dropDownIcon,
     HeroImage,
+    crossIcon,
+    removeIcon
+    
     
     
 }
@@ -31,10 +38,10 @@ export const assets ={
 export const products = [{
 
     id: 1,
-    title: 'NovelNest',
+    title: 'UNSINKABLE',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Romance',
     price: 100,
     image: [book1],
     available: true
@@ -42,10 +49,10 @@ export const products = [{
 },
 {
     id: 2,
-    title: 'NovelNest',
+    title: 'THE LIMITS',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Horror',
     price: 350,
     image: [book2],
     available: true
@@ -53,10 +60,10 @@ export const products = [{
 {
 
     id: 3,
-    title: 'NovelNest',
+    title: 'THE ONLY ONE LEFT',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Fantasy',
     price: 100,
     image: [book3],
     available: true
@@ -67,7 +74,7 @@ export const products = [{
     title: 'NovelNest',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Memoir',
     price: 350,
     image: [book4],
     available: true
@@ -78,7 +85,7 @@ export const products = [{
     title: 'NovelNest',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Thriller',
     price: 100,
     image: [book5],
     available: true
@@ -89,7 +96,7 @@ export const products = [{
     title: 'NovelNest',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Mystery',
     price: 350,
     image: [book6],
     available: true
@@ -100,7 +107,7 @@ export const products = [{
     title: 'NovelNest',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'Romance',
     price: 100,
     image: [book7],
     available: true
@@ -111,7 +118,7 @@ export const products = [{
     title: 'NovelNest',
     author: 'Author Name',
     publicationDate: '2022',
-    genre: 'Fiction',
+    category: 'ScienceFiction',
     price: 350,
     image: [book8],
     available: true
