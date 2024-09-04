@@ -1,83 +1,56 @@
-// import React, { useContext, useState, useEffect } from 'react'
-// import {useParams} from 'react-router-dom'
-// import { ShopContext } from '../context/ShopContext';
-
-// const Product = () => {
-
-//   const {productId} = useParams();
-//   const {products} = useContext(ShopContext);
-//   const [productData, setProductData] = useState(false);
-
-//   const fetchProductData = async () =>{
-//     products.map((item)=>{
-//       if(item.id === productId){
-//         setProductData(item)
-//         console.log(item);
-//         return null;
-//       }
-//     })
-//   }
-
-//   useEffect(()=>{
-//     fetchProductData();
-//   }, [productId, products])
-
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default Product
-
-
-// third try -------------------------------------------------------------
-
-import React, { useContext, useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import { ShopContext } from '../context/ShopContext'
+import React, { useContext, useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import { ShopContext } from '../context/ShopContext';
+import { images } from '../assets/assets.js';
 
 const Product = () => {
     const { productId } = useParams();
-    const { products, addToCart } = useContext(ShopContext);
+    const { addToCart } = useContext(ShopContext);
     const [productData, setProductData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
     const { currency } = useContext(ShopContext);
 
     useEffect(() => {
-        console.log('Product component rendered. productId:', productId);
-        console.log('All products:', products);
+        const fetchProduct = async () => {
+            try {
+                const response = await axios.get(`http://localhost:8091/the-knowledge-hub-api/products/${productId}`);
+                setProductData(response.data);
+            } catch (err) {
+                setError('Error fetching product data');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-        const product = products.find(item => item.id === parseInt(productId, 10));
-        if (product) {
-            console.log('Found product:', product);
-            setProductData(product);
-        } else {
-            console.log('Product not found');
-        }
-    }, [productId, products]);
+        fetchProduct();
+    }, [productId]);
 
-    if (!productData) {
+    if (loading) {
         return <div>Loading...</div>;
+    }
+
+    if (error) {
+        return <div>{error}</div>;
     }
 
     return (
         <div className='flex text-xl'>
-          <div className='pt-0 px-10'>
-          <img className='min-w-lg max-w-lg' src={productData.image[0]} alt={productData.title} />
-          </div>
-          <div className='px-20'>
-          <h1 className='font-semibold text-3xl pt-0 pb-3'>{productData.title}</h1>
-            <p className='pb-4 text-gray-600'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque cum odit consequatur voluptatem libero nulla provident velit ab aspernatur minima ipsam laudantium, quaerat minus quam corrupti, culpa quasi pariatur molestias.</p>
-            <p>Author: {productData.author}</p>
-            <p>Category: {productData.category}</p>
-            <p>Publication Date: {productData.publicationDate}</p>
-            <p>Price: {productData.price} {currency}</p>           
-            <button className='bg-black text-white px-3 py-2 rounded-md text-3xl text-center mt-6' onClick={() => addToCart(productData.id)}>Add to Cart</button>
-          </div>
-            
+            <div className='pt-0 px-10'>
+                <img className='min-w-lg max-w-lg' src={images[`book${productData.bookID}`]} alt={productData.name} />
+            </div>
+            <div className='px-20'>
+                <h1 className='font-semibold text-3xl pt-0 pb-3'>{productData.name}</h1>
+                <p className='pb-4 text-gray-600'>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque cum odit consequatur voluptatem libero nulla provident velit ab aspernatur minima ipsam laudantium, quaerat minus quam corrupti, culpa quasi pariatur molestias.</p>
+                <p>Author: {productData.author}</p>
+                <p>Genre: {productData.genre}</p>
+                <p>Published Year: {productData.publishedYear}</p>
+                <p>Price: {productData.price} {currency}</p>
+                <button className='bg-black text-white px-3 py-2 rounded-md text-3xl text-center mt-6' onClick={() => addToCart(productData.bookID)}>Add to Cart</button>
+            </div>
         </div>
-    )
-}
+    );
+};
 
-export default Product
+export default Product;

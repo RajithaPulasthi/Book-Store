@@ -4,12 +4,14 @@ import { assets } from '../assets/assets';
 import Title from '../components/Title';
 import ProductItem from '../components/ProductItem';
 
+
 const Collection = () => {
   const { products, search, showSearch} = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
   const [sortType, setSortType] = useState('relavent');
+  const [latestProducts, setLatestProducts] = useState([]);
 
   const toggleCategory = (e) => {
     if (category.includes(e.target.value)){
@@ -19,10 +21,26 @@ const Collection = () => {
       setCategory(prev=> [...prev,e.target.value])
     }
   }
+  useEffect(() => {
+    getProducts();
+    console.log('rendered');
+  }, [latestProducts]); 
+
+  const getProducts = async () =>{
+    try {
+      const res = await products;
+      setLatestProducts(res);
+      setFilterProducts(res);
+      console.log('set latest', res);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
 
   const applyFilter = () => {
 
-    let productsCopy = products.slice();
+    let productsCopy = latestProducts.slice();
 
     if (showSearch && search) {
       productsCopy = productsCopy.filter(item => item.title.toLowerCase().includes(search.toLowerCase()));
