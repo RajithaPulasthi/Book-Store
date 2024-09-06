@@ -19,7 +19,7 @@ import book8 from './book8.jpg';
 import removeIcon from './removeIcon.svg';
 
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 export const assets ={
     logo,
